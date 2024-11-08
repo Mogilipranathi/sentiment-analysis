@@ -1,0 +1,39 @@
+from textblob import TextBlob
+
+def sentiment_analyzer():
+    print("Welcome to the Sentiment Detection Analyzer!")
+    print("Enter your text below (or type 'exit' to quit):")
+    
+    while True:
+        # Get input text from the user
+        user_input = input("Text: ")
+        
+        # Exit condition
+        if user_input.lower() == 'exit':
+            print("Thank you for using the Sentiment Detection Analyzer. Goodbye!")
+            break
+        
+        # Analyze the input text using TextBlob
+        analysis = TextBlob(user_input)
+        
+        # Get polarity and subjectivity scores
+        polarity = analysis.sentiment.polarity
+        subjectivity = analysis.sentiment.subjectivity
+        
+        # Determine sentiment category
+        if polarity > 0:
+            sentiment = "Positive"
+        elif polarity < 0:
+            sentiment = "Negative"
+        else:
+            sentiment = "Neutral"
+        
+        # Display the results
+        print(f"Sentiment: {sentiment}")
+        print(f"Polarity: {polarity:.2f}")
+        print(f"Subjectivity: {subjectivity:.2f}")
+        print("-" * 50)  # Separator for readability
+
+# Run the analyzer
+sentiment_analyzer()
+
